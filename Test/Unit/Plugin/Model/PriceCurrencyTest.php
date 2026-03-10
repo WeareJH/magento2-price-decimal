@@ -44,7 +44,8 @@ class PriceCurrencyTest extends \PHPUnit\Framework\TestCase
         $configMock = $this->getMockBuilder(
             ConfigInterface::class
         )->disableOriginalConstructor()
-            ->setMethods(['isEnable', 'getScopeConfig', 'canShowPriceDecimal', 'getPricePrecision'])
+            ->onlyMethods(['isEnable', 'getScopeConfig'])
+            ->addMethods(['canShowPriceDecimal', 'getPricePrecision'])
             ->getMock();
 
         $configMock->expects($this->any())->method('isEnable')->willReturn(1);
